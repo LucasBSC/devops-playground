@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true lucasbssc/devops-playground npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-course"
+  env: "DockerCourse-env"
+  bucket_name: "elasticbeanstalk-us-east-2-511601878874"
+  bucket_path: "docker-course"
+  on:
+    branch: master
